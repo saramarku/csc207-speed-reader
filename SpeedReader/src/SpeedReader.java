@@ -17,21 +17,26 @@ public class SpeedReader {
 		int height = Integer.parseInt(args[2]);
 		int  font = Integer.parseInt(args[3]);
 		double wpm = Integer.parseInt(args[4]);
-		//if the exact number of arguments is not specified print a message
+		WordGenerator f1 = new WordGenerator(filename);
+		int sentence = f1.getSentenceCount();
+		int words = f1.getWordCount();
+		DrawingPanel panel = new DrawingPanel(width, height);
+		Graphics g = panel.getGraphics();
+		Font f = new Font("Courier", Font.BOLD, font);
 		if (args.length != 5){
 		System.out.println("Giving the wrong number of arguments!");
 		}else{
-		
-		WordGenerator f1 = new WordGenerator(filename);
-		DrawingPanel panel = new DrawingPanel(width, height);
-		Graphics g = panel.getGraphics();
-		 Font f = new Font("Courier", Font.BOLD, font);
-		 //a loop which goes through each of the words and displays them on the panel. 
+			
 		while (f1.hasNext()){
 			  g.setFont(f);
 			  g.drawString(f1.next(), 100, 100);
 			  Thread.sleep((long)(60000/wpm));
 			  panel.clear();	
-		}
+			  
+		}}
+			System.out.println("The number of words is " + words);
+			System.out.println("The number of sentences is " + sentence);
 			panel.exit();
-		}}}
+			
+		}}
+
