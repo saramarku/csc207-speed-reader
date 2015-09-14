@@ -28,8 +28,12 @@ public class SpeedReader {
 		}else{
 			
 		while (f1.hasNext()){
+			 String next = f1.next();
+			FontMetrics fm = g.getFontMetrics();
 			  g.setFont(f);
-			  g.drawString(f1.next(), 100, 100);
+			  int x = (width - fm.stringWidth(next))/2;
+			  int y = (fm.getAscent() + (height - (fm.getAscent() + fm.getDescent())) / 2);
+			  g.drawString(next, x, y);
 			  Thread.sleep((long)(60000/wpm));
 			  panel.clear();	
 			  
